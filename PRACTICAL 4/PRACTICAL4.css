@@ -1,0 +1,94 @@
+/* HookComponent.css */
+
+div {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background-color: #ffffff;
+  border: 3px solid #333333;
+  box-shadow: 5px 5px 0px #000000;
+  font-family: 'Times New Roman', serif;
+  color: #000000;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: #000000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+button {
+  border: 2px solid #333333;
+  color: #000000;
+  padding: 12px 20px;
+  margin: 8px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #f8f8f8;
+  font-family: 'Times New Roman', serif;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+  border-color: #666666;
+}
+
+/* Different background colors for each button */
+button:nth-of-type(1) {
+  background-color: #ffe6e6;
+}
+button:nth-of-type(1):hover {
+  background-color: #ffcccc;
+}
+
+button:nth-of-type(2) {
+  background-color: #ffe6f3;
+}
+button:nth-of-type(2):hover {
+  background-color: #ffccdd;
+}
+
+button:nth-of-type(3) {
+  background-color: #fff0e6;
+}
+button:nth-of-type(3):hover {
+  background-color: #ffe0cc;
+}
+
+button:nth-of-type(4) {
+  background-color: #e6fff0;
+}
+button:nth-of-type(4):hover {
+  background-color: #ccffe0;
+}
+
+input {
+  width: 250px;
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  border: 2px solid #333333;
+  margin-bottom: 15px;
+  outline: none;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: normal;
+  font-family: 'Times New Roman', serif;
+}
+
+input:focus {
+  border-color: #666666;
+  background-color: #f8f8f8;
+}
+
+h3 {
+  font-weight: bold;
+  color: #333333;
+  margin: 15px 0 5px;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
