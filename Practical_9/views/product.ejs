@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #28a745;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        nav a:hover {
+            background: #f8f9fa;
+            color: #28a745;
+        }
+        
+        .breadcrumb {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .breadcrumb a {
+            color: #28a745;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .product-detail {
+            padding: 3rem 0;
+        }
+        
+        .product-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .product-image {
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .product-icon {
+            font-size: 8rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .product-info h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .product-category {
+            background: #e9ecef;
+            color: #6c757d;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stars {
+            color: #ffc107;
+            font-size: 1.5rem;
+        }
+        
+        .rating-text {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .product-price {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #28a745;
+            margin-bottom: 2rem;
+        }
+        
+        .product-description {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .features {
+            margin-bottom: 2rem;
+        }
+        
+        .features h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .features li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            background: #28a745;
+            color: #fff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+            
+            .product-info h1 {
+                font-size: 2rem;
+            }
+            
+            .product-price {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">🛒 TechMart</a>
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="breadcrumb">
+        <div class="container">
+            <a href="/">Home</a> / <a href="/">Products</a> / <%= product.name %>
+        </div>
+    </section>
+
+    <section class="product-detail">
+        <div class="container">
+            <a href="/" class="back-link">← Back to Products</a>
+            
+            <div class="product-container">
+                <div class="product-image">
+                    <span class="product-icon"><%= product.image %></span>
+                </div>
+                
+                <div class="product-info">
+                    <h1><%= product.name %></h1>
+                    <span class="product-category"><%= product.category %></span>
+                    
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-text"><%= product.rating %> out of 5</span>
+                    </div>
+                    
+                    <div class="product-price"><%= product.price %></div>
+                    
+                    <p class="product-description"><%= product.description %></p>
+                    
+                    <div class="features">
+                        <h3>Key Features:</h3>
+                        <ul>
+                            <li>Premium build quality and materials</li>
+                            <li>Latest technology and innovation</li>
+                            <li>Comprehensive warranty coverage</li>
+                            <li>Free shipping and easy returns</li>
+                            <li>24/7 customer support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn btn-secondary">Add to Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

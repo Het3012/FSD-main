@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧮 Advanced Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            padding: 3rem;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 2.5rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .calculator-form {
+            margin-bottom: 2rem;
+        }
+
+        .input-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #28a745;
+        }
+
+        .operations-section {
+            margin-bottom: 2rem;
+        }
+
+        .operations-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .operations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .operation-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .operation-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .operation-btn {
+            display: block;
+            padding: 1rem;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .operation-option input[type="radio"]:checked+.operation-btn {
+            background: #28a745;
+            color: #fff;
+            border-color: #28a745;
+            transform: translateY(-2px);
+        }
+
+        .operation-btn:hover {
+            background: #e9ecef;
+            transform: translateY(-1px);
+        }
+
+        .operation-option input[type="radio"]:checked+.operation-btn:hover {
+            background: #218838;
+        }
+
+        .calculate-btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .calculate-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .result-section {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .result-icon,
+        .error-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .history-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .history-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            background: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .clear-history-btn {
+            background: #6c757d;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .clear-history-btn:hover {
+            background: #5a6268;
+        }
+
+        .advanced-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature-btn {
+            background: #17a2b8;
+            color: #fff;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .feature-btn:hover {
+            background: #138496;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            .input-section {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .operations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🧮 Advanced Calculator</h1>
+            <p class="subtitle">Perform calculations with enhanced features and history tracking</p>
+        </div>
+
+        <form class="calculator-form" method="post" action="/">
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="num1">First Number</label>
+                    <input type="number" id="num1" name="num1" value="<%= num1 %>" placeholder="Enter first number"
+                        required step="any">
+                </div>
+
+                <div class="form-group">
+                    <label for="num2">Second Number</label>
+                    <input type="number" id="num2" name="num2" value="<%= num2 %>" placeholder="Enter second number"
+                        required step="any">
+                </div>
+            </div>
+
+            <div class="operations-section">
+                <div class="operations-title">Choose Operation</div>
+                <div class="operations-grid">
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="add" <%=operation==='add' ? 'checked' : '' %>>
+                        <span class="operation-btn">➕ Add</span>
+                    </label>
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="subtract" <%=operation==='subtract' ? 'checked' : ''
+                            %>>
+                        <span class="operation-btn">➖ Subtract</span>
+                    </label>
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="multiply" <%=operation==='multiply' ? 'checked' : ''
+                            %>>
+                        <span class="operation-btn">✖️ Multiply</span>
+                    </label>
+                    <label class="operation-option">
+                        <input type="radio" name="operation" value="divide" <%=operation==='divide' ? 'checked' : '' %>>
+                        <span class="operation-btn">➗ Divide</span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="calculate-btn">🚀 Calculate Result</button>
+        </form>
+
+        <div class="result-section">
+            <% if (error) { %>
+                <div class="error-message">
+                    <span class="error-icon">⚠️</span>
+                    <%= error %>
+                </div>
+                <% } else if (result !==null) { %>
+                    <div class="result-message">
+                        <span class="result-icon">🎉</span>
+                        Result: <strong>
+                            <%= result %>
+                        </strong>
+                    </div>
+                    <% } %>
+        </div>
+
+        <div class="advanced-features">
+            <button type="button" class="feature-btn" onclick="clearForm()">🗑️ Clear</button>
+            <button type="button" class="feature-btn" onclick="swapNumbers()">🔄 Swap</button>
+            <button type="button" class="feature-btn" onclick="randomNumbers()">🎲 Random</button>
+            <button type="button" class="feature-btn" onclick="copyResult()">📋 Copy</button>
+        </div>
+
+        <div class="history-section">
+            <div class="history-title">📊 Calculation History</div>
+            <div class="history-list" id="historyList">
+                <div class="no-calculations">No calculations yet</div>
+            </div>
+            <button type="button" class="clear-history-btn" onclick="clearHistory()">Clear History</button>
+        </div>
+    </div>
+
+    <script>
+        // Store calculation history
+        let calculationHistory = JSON.parse(localStorage.getItem('calcHistory') || '[]');
+
+        // Update history display
+        function updateHistoryDisplay() {
+            const historyList = document.getElementById('historyList');
+            if (calculationHistory.length === 0) {
+                historyList.innerHTML = '<div class="no-calculations">No calculations yet</div>';
+                return;
+            }
+
+            historyList.innerHTML = calculationHistory.slice(-10).reverse().map(item =>
+                `<div class="history-item">${item}</div>`
+            ).join('');
+        }
+
+        // Add calculation to history
+        function addToHistory(calculation) {
+            calculationHistory.push(calculation);
+            localStorage.setItem('calcHistory', JSON.stringify(calculationHistory));
+            updateHistoryDisplay();
+        }
+
+        // Clear form
+        function clearForm() {
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.querySelectorAll('input[name="operation"]').forEach(radio => radio.checked = false);
+        }
+
+        // Swap numbers
+        function swapNumbers() {
+            const num1 = document.getElementById('num1');
+            const num2 = document.getElementById('num2');
+            const temp = num1.value;
+            num1.value = num2.value;
+            num2.value = temp;
+        }
+
+        // Generate random numbers
+        function randomNumbers() {
+            document.getElementById('num1').value = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('num2').value = Math.floor(Math.random() * 100) + 1;
+        }
+
+        // Copy result
+        function copyResult() {
+            const resultText = document.querySelector('.result-message strong');
+            if (resultText) {
+                navigator.clipboard.writeText(resultText.textContent);
+                alert('Result copied to clipboard!');
+            }
+        }
+
+        // Clear history
+        function clearHistory() {
+            calculationHistory = [];
+            localStorage.removeItem('calcHistory');
+            updateHistoryDisplay();
+        }
+
+        // Initialize history display
+        updateHistoryDisplay();
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                document.querySelector('.calculate-btn').click();
+            }
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                randomNumbers();
+            }
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                swapNumbers();
+            }
+        });
+    </script>
+
+    <% if (typeof result !=='undefined' && result !==null && typeof error==='undefined' ) { %>
+        <script>
+            // Save calculation to history when page loads
+            window.addEventListener('load', function () {
+                const operationSymbols = {
+                    'add': '+',
+                    'subtract': '-',
+                    'multiply': '×',
+                    'divide': '÷'
+                };
+                const calculation = '<%= num1 %> ' + operationSymbols['<%= operation %>'] + ' <%= num2 %> = <%= result %>';
+                addToHistory(calculation);
+            });
+        </script>
+        <% } %>
+
+</body>
+
+</html>
