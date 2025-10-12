@@ -1,0 +1,104 @@
+/* Basic black and white styling for beginners */
+
+body {
+  background: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-app {
+  max-width: 400px;
+  margin: 50px auto;
+  background: white;
+  border: 2px solid black;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.todo-input-row {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+  color: black;
+  font-size: 14px;
+  outline: none;
+}
+
+.todo-input:focus {
+  border: 2px solid black;
+}
+
+.todo-add-btn {
+  background: white;
+  color: black;
+  border: 1px solid black;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.todo-add-btn:hover {
+  background: black;
+  color: white;
+}
+
+.todo-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-task {
+  background: white;
+  border: 1px solid black;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: black;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.icon-btn {
+  background: white;
+  border: 1px solid black;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-btn:not(:disabled):hover {
+  background: black;
+  color: white;
+}

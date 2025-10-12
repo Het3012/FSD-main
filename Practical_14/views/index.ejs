@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Portal - Upload Resume</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="icon">📄</div>
+        <h1>Upload Your Resume</h1>
+        <p class="subtitle">Join our talent pool by submitting your resume</p>
+      </div>
+
+      <% if (error) { %>
+        <div class="error-message">
+          <strong>⚠️ Upload Failed:</strong> <%= error %>
+        </div>
+      <% } %>
+
+      <div class="requirements">
+        <h3>File Requirements:</h3>
+        <ul>
+          <li>✓ File format: <strong>PDF only</strong></li>
+          <li>✓ Maximum size: <strong>2MB</strong></li>
+          <li>✓ Ensure your resume is up to date</li>
+        </ul>
+      </div>
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="upload-area">
+          <div class="upload-icon">📤</div>
+          <label for="resume" class="file-label">
+            Choose Resume File
+          </label>
+          <input 
+            type="file" 
+            id="resume" 
+            name="resume" 
+            accept=".pdf"
+            required
+          >
+          <p class="file-info">Selected file will appear here</p>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span>Upload Resume</span>
+          <span class="arrow">→</span>
+        </button>
+      </form>
+
+      <div class="info-box">
+        <p><strong>Privacy Notice:</strong> Your resume will be securely stored and only used for recruitment purposes.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Display selected filename
+    const fileInput = document.getElementById('resume');
+    const fileInfo = document.querySelector('.file-info');
+    
+    fileInput.addEventListener('change', function(e) {
+      if (this.files && this.files[0]) {
+        const fileName = this.files[0].name;
+        const fileSize = (this.files[0].size / 1024 / 1024).toFixed(2);
+        fileInfo.textContent = `Selected: ${fileName} (${fileSize} MB)`;
+        fileInfo.style.color = '#667eea';
+        fileInfo.style.fontWeight = '600';
+      }
+    });
+  </script>
+</body>
+</html>

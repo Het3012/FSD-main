@@ -1,0 +1,166 @@
+/* Minimal, professional, responsive design for rep counter */
+:root {
+  --color-primary: #000000;
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-border: #000000;
+  --color-btn: #ffffff;
+  --color-btn-hover: #f0f0f0;
+  --radius: 8px;
+  --spacing: 16px;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.counter-container {
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 40px 30px;
+  min-width: 280px;
+  max-width: 90vw;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: var(--color-text);
+  letter-spacing: 0.5px;
+}
+
+.counter-section {
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 25px 0;
+}
+
+.counter-display {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.rep-label {
+  font-size: 16px;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.session-info {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.main-btn {
+  background: var(--color-primary);
+  color: var(--color-btn);
+  border: none;
+  border-radius: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 15px 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 60px;
+}
+
+.main-btn:hover {
+  background: #333333;
+  transform: translateY(-2px);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing);
+}
+
+.action-buttons button {
+  background: var(--color-primary);
+  color: var(--color-btn);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-buttons button:hover {
+  background: #333333;
+}
+
+.workout-history {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid var(--color-border);
+  text-align: left;
+}
+
+.history-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 15px 0;
+  text-align: center;
+}
+
+.sets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.keyboard-shortcuts {
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--color-text);
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .counter-container {
+    padding: 20px 15px;
+    min-width: 0;
+  }
+  .main-btn {
+    font-size: 20px;
+    padding: 12px 20px;
+  }
+  .counter-display {
+    font-size: 36px;
+  }
+}

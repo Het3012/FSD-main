@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Calculation Results</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Income Calculation Results</h1>
+      
+      <div class="result-section">
+        <div class="result-item">
+          <span class="result-label">Income Source 1:</span>
+          <span class="result-value">₹<%= income1 %></span>
+        </div>
+
+        <div class="result-item">
+          <span class="result-label">Income Source 2:</span>
+          <span class="result-value">₹<%= income2 %></span>
+        </div>
+
+        <div class="result-divider"></div>
+
+        <div class="result-item total">
+          <span class="result-label">Total Income:</span>
+          <span class="result-value">₹<%= totalIncome %></span>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <a href="/" class="btn-back">Calculate Again</a>
+      </div>
+
+      <div class="info-box">
+        <p><strong>Note:</strong> This is your total combined income from both sources. Please use this amount when filing your tax returns.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

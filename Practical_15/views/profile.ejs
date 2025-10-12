@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Portal - Profile</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="icon">👤</div>
+        <h1>User Profile</h1>
+        <p class="subtitle">Your session information</p>
+      </div>
+
+      <div class="profile-section">
+        <div class="profile-header">
+          <div class="avatar"><%= user.username.charAt(0).toUpperCase() %></div>
+          <h2><%= user.username %></h2>
+        </div>
+
+        <div class="session-info">
+          <h3>Session Details</h3>
+          
+          <div class="info-item">
+            <span class="info-label">👤 Username:</span>
+            <span class="info-value"><%= user.username %></span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">📧 Email:</span>
+            <span class="info-value"><%= user.email %></span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">🕐 Login Time:</span>
+            <span class="info-value"><%= user.loginTime %></span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">⏱️ Session Duration:</span>
+            <span class="info-value"><%= sessionDuration %> minutes</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">🔑 Session ID:</span>
+            <span class="info-value"><%= sessionId %>...</span>
+          </div>
+        </div>
+
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Active Session
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <a href="/" class="btn-primary">Home</a>
+        <a href="/logout" class="btn-logout">Logout</a>
+      </div>
+
+      <div class="info-box">
+        <p><strong>Session Info:</strong> Your session will remain active for 24 hours or until you logout. All session data is stored server-side for security.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Auto-refresh session duration every minute
+    setInterval(() => {
+      location.reload();
+    }, 60000);
+  </script>
+</body>
+</html>

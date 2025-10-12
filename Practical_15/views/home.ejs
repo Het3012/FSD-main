@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Portal - Home</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="icon">📚</div>
+        <h1>Welcome to Library Portal</h1>
+        <p class="subtitle">Your Digital Reading Companion</p>
+      </div>
+
+      <% if (typeof loggedOut !== 'undefined' && loggedOut) { %>
+        <div class="success-message">
+          <strong>✓ Logged Out Successfully</strong>
+          <p>Thank you, <%= logoutUsername %>! Your session has been ended.</p>
+        </div>
+      <% } %>
+
+      <% if (user) { %>
+        <div class="welcome-box">
+          <h2>Hello, <%= user.username %>! 👋</h2>
+          <p>You are currently logged in.</p>
+        </div>
+
+        <div class="action-buttons">
+          <a href="/profile" class="btn-primary">View Profile</a>
+          <a href="/logout" class="btn-secondary">Logout</a>
+        </div>
+      <% } else { %>
+        <div class="info-section">
+          <h3>Features:</h3>
+          <ul>
+            <li>📖 Browse thousands of books</li>
+            <li>🔖 Save your reading progress</li>
+            <li>⭐ Rate and review books</li>
+            <li>👥 Connect with fellow readers</li>
+          </ul>
+        </div>
+
+        <div class="action-buttons">
+          <a href="/login" class="btn-primary">Login to Continue</a>
+        </div>
+
+        <div class="info-box">
+          <p>New to our library? Login with any username and email to get started!</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

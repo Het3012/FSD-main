@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Uploaded Successfully</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="success-header">
+        <div class="success-icon">✓</div>
+        <h1>Resume Uploaded Successfully!</h1>
+        <p class="subtitle">Thank you for submitting your application</p>
+      </div>
+
+      <div class="file-details">
+        <h3>Upload Details:</h3>
+        
+        <div class="detail-item">
+          <span class="detail-label">Original Filename:</span>
+          <span class="detail-value"><%= file.originalName %></span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Saved As:</span>
+          <span class="detail-value"><%= file.savedName %></span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">File Size:</span>
+          <span class="detail-value"><%= file.size %> KB</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Upload Time:</span>
+          <span class="detail-value"><%= file.uploadDate %></span>
+        </div>
+      </div>
+
+      <div class="success-message">
+        <p>✅ Your resume has been successfully uploaded to our system.</p>
+        <p>Our recruitment team will review your application and contact you if your profile matches our requirements.</p>
+      </div>
+
+      <div class="action-buttons">
+        <a href="/" class="btn-primary">Upload Another Resume</a>
+      </div>
+
+      <div class="info-box success-info">
+        <p><strong>What's Next?</strong> Keep an eye on your email for updates regarding your application status.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

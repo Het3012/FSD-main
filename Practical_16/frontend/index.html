@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Portfolio - Contact Me</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">Ved Patel</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Hi, I'm a <span class="highlight">Freelance Developer</span></h1>
+            <p>Creating amazing digital experiences</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I'm a passionate freelance developer with expertise in web development, UI/UX design, and creating custom
+                solutions for businesses. With 5+ years of experience, I help bring ideas to life.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>My Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image"></div>
+                    <h3>E-Commerce Platform</h3>
+                    <p>Full-stack e-commerce solution</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image"></div>
+                    <h3>Mobile App Design</h3>
+                    <p>UI/UX for fitness app</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image"></div>
+                    <h3>Corporate Website</h3>
+                    <p>Modern business website</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="contact-subtitle">Have a project in mind? Let's work together!</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="icon">📧</div>
+                        <h3>Email</h3>
+                        <p>vedkanu31@gmail.com</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">📱</div>
+                        <h3>Phone</h3>
+                        <p>9316955537</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">📍</div>
+                        <h3>Location</h3>
+                        <p>Gujarat, India</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
+                            <span class="error-message" id="subjectError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+
+                        <button type="submit" class="submit-button" id="submitButton">
+                            <span class="button-text">Send Message</span>
+                            <span class="button-loader" style="display: none;">Sending...</span>
+                        </button>
+                    </form>
+
+                    <!-- Success/Error Message -->
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Harsh Pipaliya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
