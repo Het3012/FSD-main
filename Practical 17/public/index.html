@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuition Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Tuition Class Admin Panel</h1>
+            <p>Manage Student Records</p>
+        </header>
+
+        <!-- Add Student Form -->
+        <div class="card">
+            <div class="card-header">
+                <h2>➕ Add New Student</h2>
+            </div>
+            <form id="studentForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="standard">Standard/Class *</label>
+                        <input type="text" id="standard" name="standard" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feesTotal">Total Fees *</label>
+                        <input type="number" id="feesTotal" name="feesTotal" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="feesPaid">Fees Paid</label>
+                        <input type="number" id="feesPaid" name="feesPaid" value="0" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="remarks">Remarks</label>
+                    <textarea id="remarks" name="remarks" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Student</button>
+                <button type="button" class="btn btn-secondary" id="cancelEdit" style="display: none;">Cancel</button>
+            </form>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="card">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 Search students by name, email, or subject...">
+            </div>
+        </div>
+
+        <!-- Students List -->
+        <div class="card">
+            <div class="card-header">
+                <h2>👥 Students List</h2>
+                <span id="studentCount" class="badge">0 Students</span>
+            </div>
+            <div class="table-container">
+                <table id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Standard</th>
+                            <th>Subject</th>
+                            <th>Fees</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <tr>
+                            <td colspan="8" class="no-data">Loading students...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✏️ Edit Student</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="editId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="editName">Name *</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email *</label>
+                        <input type="email" id="editEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPhone">Phone *</label>
+                        <input type="tel" id="editPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editStandard">Standard *</label>
+                        <input type="text" id="editStandard" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSubject">Subject *</label>
+                        <input type="text" id="editSubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFeesTotal">Total Fees *</label>
+                        <input type="number" id="editFeesTotal" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="editFeesPaid">Fees Paid</label>
+                        <input type="number" id="editFeesPaid" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="editStatus">Status</label>
+                        <select id="editStatus">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editRemarks">Remarks</label>
+                    <textarea id="editRemarks" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Student</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
